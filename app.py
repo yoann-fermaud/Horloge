@@ -1,4 +1,5 @@
 import time
+# import keyboard # Error "Install package keyboard
 
 # input tuple use to set time
 my_tuple = ()
