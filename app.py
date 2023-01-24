@@ -1,5 +1,5 @@
 import time
-# import keyboard # Error "Install package keyboard
+import keyboard  # Error "Install package keyboard
 
 # input tuple use to set time
 my_tuple = ()
@@ -12,6 +12,7 @@ am_pm_flag = False
 def input_time():
     global my_tuple
     my_tuple = tuple(map(int, [input(f"Enter {var_time} : ") for var_time in ("HH", "MM", "SS")]))
+    print("Press 'p' to pause the clock\n")
 
 
 def set_alarm_24(new_tuple):
@@ -113,6 +114,13 @@ def format_12(new_tuple):
         return str(format_tuple[0]) + ":" + str(format_tuple[1]) + ":" + str(format_tuple[2]) + " PM"
 
 
+def break_time():
+    print("\nClock paused")
+    input_key = input("Remove the break ? y or n : ")
+    while input_key.lower() != "y":
+        input_key = input("Remove the break ? y or n : ")
+
+
 def display_alarm_24(new_tuple):
     print(f"Current alarm time : {format_24(new_tuple)}")
 
@@ -134,6 +142,9 @@ def main():
         # set_alarm_24(my_tuple_alarm)
         # display_time_24()
         display_time_12()
+        # set the break when you press "p"
+        if keyboard.is_pressed('p'):
+            break_time()
 
 
 if __name__ == '__main__':
